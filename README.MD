@@ -47,16 +47,16 @@ https://www.kaggle.com/datasets/dillonmyrick/high-school-student-performance-and
 32. grade_2 - second period grade (numeric: from 0 to 20)
 33. final_grade - final grade (numeric: from 0 to 20, output target)
 
-Data processing
+Data processing  
 This data has been converted to SQLite (?)
 
-App
+App    
 
-Home Page
-data set columns - static page to display columns in the data set
-visualization 1
-visualization 2
-glossary - if we need to add any statis information about the visualizations, or this can be added just below visualization
+Home Page     
+data set columns - static page to display columns in the data set     
+visualization 1     
+visualization 2     
+glossary - if we need to add any statis information about the visualizations, or this can be added just below visualization   
 
 Screen shots
 
