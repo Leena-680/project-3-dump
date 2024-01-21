@@ -3,7 +3,7 @@ import pandas as pd
 import json
 from flask import Flask, jsonify
 
-# Load the CSV data into a DataFrame (adjust the file path as necessary)
+# Load the CSV data into a DataFrame
 df = pd.read_csv('Resources/student_math_clean.csv')
 
 # Mapping functions
