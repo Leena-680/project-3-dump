@@ -1,17 +1,16 @@
-Introduction
+Introduction     
 
-This is a collaborative project to develop a full-stack data visualization web application, using Python Flask-powered API, HTML/CSS, JavaScript, and SQLite database, which will allow users to interactively explore a dataset.
+This is a collaborative project to develop a full-stack data visualization web application, using Python Flask-powered API, HTML/CSS, JavaScript, and SQLite database, which will allow users to interactively explore a dataset.    
+The result is a tool that allows users to analysize maths grades of high school students from two different schools. User can view comparison between two schools based on demographic information of the students and overall habits of the students.    
 
-The result is a tool that allows users to analysize maths grades of high school students from two different schools. User can view comparison between two schools based on demographic information of the students and overall habits of the students.
+Purpose    
+This project will explore whether there is any correlation between student demographics and final grade.    
+First visualization will compare compare impact of individual student habits on the final grade.     
+Second visualization will determine whether there is any correlation between student demographic information and the choice of school.     
 
-Purpose
-This project will explore whether there is any correlation between student demographics and final grade. 
-First visualization will compare compare impact of individual student habits on the final grade.
-Second visualization will determine whether there is any correlation between student demographic information and the choice of school. 
-
-Data set
-This project is based on following data set.
-https://www.kaggle.com/datasets/dillonmyrick/high-school-student-performance-and-demographics
+Data set     
+This project is based on following data set.    
+https://www.kaggle.com/datasets/dillonmyrick/high-school-student-performance-and-demographics    
 
 1. school - student's school (binary: "GP" - Gabriel Pereira or "MS" - Mousinho da Silveira)
 2. sex - student's sex (binary: "F" - female or "M" - male)
@@ -47,19 +46,19 @@ https://www.kaggle.com/datasets/dillonmyrick/high-school-student-performance-and
 32. grade_2 - second period grade (numeric: from 0 to 20)
 33. final_grade - final grade (numeric: from 0 to 20, output target)
 
-Data processing
+Data processing    
 This data has been converted to SQLite (?)
 
-App
+App    
 
-Home Page
-data set columns - static page to display columns in the data set
-visualization 1
-visualization 2
-glossary - if we need to add any statis information about the visualizations, or this can be added just below visualization
+Home Page     
+data set columns - static page to display columns in the data set     
+visualization 1     
+visualization 2     
+glossary - if we need to add any statis information about the visualizations, or this can be added just below visualization   
 
-Screen shots
+Screen shots   
 
-Future enhancements
+Future enhancements    
 This can be further developed to advice on how to improve final grade based on student information.
 
