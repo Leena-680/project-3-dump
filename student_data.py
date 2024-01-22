@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import json
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 # Load the CSV data into a DataFrame
 df = pd.read_csv('Resources/student_math_clean.csv')
@@ -41,6 +42,7 @@ conn.close()
 
 # Flask app setup
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/data', methods=['GET'])
 def get_data():
