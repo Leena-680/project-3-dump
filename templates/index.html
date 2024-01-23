@@ -1,17 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Data Visualization with Chart.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gauge Chart</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    #container {
+      max-width: 600px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    label {
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    #gradeDropdown {
+      font-size: 14px;
+      padding: 8px;
+      margin-bottom: 20px;
+    }
+
+    #gaugeChart {
+      margin-top: 20px;
+    }
+
+    text {
+      font-size: 24px;
+      font-weight: bold;
+      fill: black;
+    }
+  </style>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
 </head>
 <body>
-    <h1>Grade Statistics</h1>
-    <canvas id="gradeChart"></canvas>
 
-    <h1>Gender Statistics</h1>
-    <canvas id="genderChart"></canvas>
+<div id="container">
+  <h2>Math Grade Analysis</h2>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <label for="gradeDropdown">Select Grade:</label>
+  <select id="gradeDropdown" onchange="updateGauge()">
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+  </select>
+
+  <div id="gaugeChart"></div>
+</div>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
 
 </body>
 </html>
