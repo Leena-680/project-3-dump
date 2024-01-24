@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 2</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>Analysing Student Performance</h1>
+        <p><strong>Looking into the students' performances in mathematics and analysing how their results are affected by personal parameters and academic parameters</strong>, <i>finding what factors contribute to success!</i></p>
+     
+        <img src="https://www.teachhub.com/wp-content/uploads/2021/06/June-21-Adding-SEL-Components-to-a-High-School-Classroom_web-1024x682.jpg" width="600" height="400">
+
+        <h2>Menu</h2>
+        <a href="{{ url_for('visualisation_1') }}">Go to Visualisation 1</a>
+
+        <a href="{{ url_for('visualisation_2') }}">Go to Visualisation 2</a>
+
+
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The School we are analysing</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+    <!-- Your custom CSS if needed -->
+    <style>
+        #map {
+            height: 400px; /* Set the height of the map */
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([51.505, -0.09], 8); // Set initial coordinates and zoom level
+
+        // Add a tile layer (you can replace this with your preferred tile provider)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add a marker at a specific location
+        let marker1 = L.marker([38.57588, -7.90219]).addTo(map);
+
+        // Add a popup to the marker
+        marker1.bindPopup("<b>Escola Secundária Gabriel Pereira</b><br>183 Female and 166 Male students academic performances were analysed in dataset</br>").openPopup();
+
+        // Add another marker
+        let marker2 = L.marker([39.32155, -7.43580]).addTo(map);
+
+        // Add a popup to the marker
+        marker2.bindPopup("<b>Mouzinho da Silveira High School</b> <br>25 Female and 21 Male students academic performances were analysed in dataset</br>").openPopup();
+
+    </script>
+</body>
+</html>
