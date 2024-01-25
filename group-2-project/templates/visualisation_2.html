@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>High School Students Performance Dashboard</title>
+    <style type="text/css">
+        .chartBox {
+            width: 700px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+        <h2>Analysis based on higher ed goal</h2>
+   
+         <label for="gradeDropdown">Select Grade:</label>
+         <select id="gradeDropdown" onchange="updatePi()">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+         </select>
+     
+         <div class="chartBox">
+            <canvas id="myChart" ></canvas>
+        </div>
+     </div>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+
+        // Drop down menu
+        function myFunction() {
+        var x = document.getElementById("mySelect").value;
+        document.getElementById("demo").innerHTML = "You selected: " + x;
+        }
+
+
+        //setup block
+         const data = {
+            labels: ['Yes', 'No'],
+            datasets: [{
+              label: 'Higher Ed Goal',
+              data: [80, 20],
+              borderWidth: 1
+            }]
+          };
+
+          //config block
+          const config = {
+          type: 'pie',  
+          data,
+          options: {}
+          };
+
+          //render block
+          const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+
+          
+    </script>
+
+    
+  </body> 
+  

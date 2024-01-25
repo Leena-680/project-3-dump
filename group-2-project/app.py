@@ -17,6 +17,10 @@ def get_dataframe():
 def home():
     return render_template("index.html")
 
+@app.route("/About")
+def about():
+    return render_template("about.html")
+
 @app.route("/visualisation_1")
 def visualisation_1():
     return render_template("visualisation_1.html")
