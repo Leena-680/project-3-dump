@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <a href="{{ url_for('home') }}">Return to Home</a>
     <title>High School Students Performance Dashboard</title>
     <style type="text/css">
         .chartBox {
@@ -16,13 +17,15 @@
         <h2>Analysis based on higher ed goal</h2>
    
          <label for="gradeDropdown">Select Grade:</label>
-         <select id="gradeDropdown" onchange="updatePi()">
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
+         <select id="gradeDropdown" >
+            <option value="">-- Select --</option>
+            <option value="80,20">A</option>
+            <option value="70,30">B</option>
+            <option value="40,60">C</option>
+            <option value="10,90">D</option>
          </select>
      
+         <p id="demo"></p>
          <div class="chartBox">
             <canvas id="myChart" ></canvas>
         </div>
@@ -34,36 +37,38 @@
     
     <script>
 
-        // Drop down menu
-        function myFunction() {
-        var x = document.getElementById("mySelect").value;
-        document.getElementById("demo").innerHTML = "You selected: " + x;
-        }
+         //setup block
+        const data = {
+                labels: ['Yes', 'No'],
+                datasets: [{
+                label: 'Higher Ed Goal',
+                data: [80, 20],
+                borderWidth: 1
+                }]
+            };
 
-
-        //setup block
-         const data = {
-            labels: ['Yes', 'No'],
-            datasets: [{
-              label: 'Higher Ed Goal',
-              data: [80, 20],
-              borderWidth: 1
-            }]
-          };
-
-          //config block
-          const config = {
+        //config block
+        const config = {
           type: 'pie',  
           data,
           options: {}
           };
 
           //render block
-          const myChart = new Chart(
+        const myChart = new Chart(
             document.getElementById('myChart'),
             config
           );
 
+        const gradeDropdown = document.getElementById('gradeDropdown');
+        gradeDropdown.addEventListener('change', goalTracker);
+        function goalTracker(){
+           // const label = gradeDropdown.options[gradeDropdown.selectedIndex].text;
+            //myChart.data.datasets[0].label = label;
+            myChart.data.datasets[0].data = gradeDropdown.value.split(',');
+
+            myChart.update();
+        }
           
     </script>
 
