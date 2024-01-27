@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Data Chart</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Create a canvas element to render the chart -->
+<canvas id="studentChart" width="800" height="400"></canvas>
+
+<script>
+// Provided JSON data
+const jsonData = [
+  {
+    "avgAbsence": 4.3,
+    "avgFreeTime": 3.35,
+    "avgHealth": 3.3,
+    "avgSocial": 2.95,
+    "avgStudyTime": 4.775,
+    "avgTravelTime": 11.8125,
+    "avgWeekdayAlcohol": 1.275,
+    "avgWeekendAlcohol": 1.9,
+    "finalGrade": "A",
+    "higher_ed_NoPct": 0,
+    "higher_ed_YesPct": 100,
+    "internet_access_NoPct": 7.5,
+    "internet_access_YesPct": 92.5,
+    "romantic_relationship_NoPct": 77.5,
+    "romantic_relationship_YesPct": 22.5,
+    "studentNo": 40
+  },
+  // ... (include the rest of the data)
+];
+
+// Extract labels and data for the chart
+const labels = jsonData.map(data => data.finalGrade);
+const studyTimes = jsonData.map(data => data.avgStudyTime);
+const travelTimes = jsonData.map(data => data.avgTravelTime);
+
+// Create a bar chart using Chart.js
+const ctx = document.getElementById('studentChart').getContext('2d');
+const studentChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      {
+        label: 'Average Study Time',
+        data: studyTimes,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      },
+      {
+        label: 'Average Travel Time',
+        data: travelTimes,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
