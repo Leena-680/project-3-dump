@@ -4,70 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <a href="{{ url_for('home') }}">Return to Home</a>
-    <title>Gauge Chart</title>
+    <title>Math Grade Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: peachpuff;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-  
-      #container {
-        max-width: 600px;
-        margin: 40px auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-  
-      h2 {
-        color: #333;
-      }
-  
-      label {
-        font-size: 16px;
-        margin-right: 10px;
-      }
-  
-      #gradeDropdown {
-        font-size: 14px;
-        padding: 8px;
-        margin-bottom: 20px;
-      }
-  
-      #gaugeChart {
-        margin-top: 20px;
-      }
-  
-      text {
-        font-size: 24px;
-        font-weight: bold;
-        fill: black;
-      }
+        .header {
+            text-align: center;
+            padding: 10px;
+            background-color: #25A18E;
+            color: white;
+            font-size: 28px;
+        }
+        .gauge-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .gauge {
+            flex-basis: 30%;
+            text-align: center;
+        }
+        .grade-selection {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .grade-selection label {
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .grade-selection select {
+            font-weight: bold;
+            font-size: 20px;
+        }
     </style>
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-  </head>
-  <body>
-  
-  <div id="container">
-    <h2>Math Grade Analysis</h2>
-  
-    <label for="gradeDropdown">Select Grade:</label>
-    <select id="gradeDropdown" onchange="updateGauge()">
-      <option value="A">A</option>
-      <option value="B">B</option>
-      <option value="C">C</option>
-      <option value="D">D</option>
-    </select>
-  
-    <div id="gaugeChart"></div>
-  </div>
-  
-  <script src="../static/js/app.js"></script>
-  
-  </body>
-  </html>
-  
+</head>
+<body>
+    <div class="header">
+    Mathematics Performance Dashboard
+    </div>
+      <!-- dropdown menu for grades -->
+    <div class="grade-selection">
+      <label for="gradeDropdown">Select Grade:</label>
+      <select id="gradeDropdown">
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+
+      <!-- Container for gauge charts -->
+      <div class="gauge-container">
+        <div id="avgStudyTimeGauge" class="gauge"></div>
+        <div id="avgTravelTimeGauge" class="gauge"></div>
+        <div id="sumClassFailuresGauge" class="gauge"></div>
+      </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
