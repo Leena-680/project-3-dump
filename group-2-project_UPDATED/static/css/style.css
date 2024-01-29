@@ -1,0 +1,37 @@
+body {
+    background-color: peachpuff;
+    font-family: 'Righteous'; /* Don't forget to terminate the font-family value with a semicolon */
+
+    /* Resetting default margin and padding for all elements */
+    margin: 0;
+    padding: 0;
+}
+
+/* Applying styles to h1 */
+h1 {
+    font-size: 75px;
+    color: #333; /* You can change the color code as per your preference */
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* Applying styles to h2 */
+h2 {
+    font-size: 25px;
+    color: #333; /* You can change the color code as per your preference */
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 20px;
+    color: #444; /* You can change the color code as per your preference */
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Remove the default margin and padding from the body. */
+#map {
+    height: 450px; /* Set the height of the map */
+}

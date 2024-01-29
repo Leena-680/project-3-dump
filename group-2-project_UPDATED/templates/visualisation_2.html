@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <a href="{{ url_for('home') }}">Return to Home</a>
+    <title>High School Students Performance Dashboard</title>
+    <style type="text/css">
+        .chartBox {
+            width: 250px;
+        }
+    </style>
+  </head>
+  <body>
+
+    <br/><br/>
+    <div id="container">
+        <h2>Analysis based on higher ed goal</h2>
+   
+         <label for="gradeDropdown">Select Grade:</label>
+         <select id="gradeDropdown" >
+            <option value="">-- Select --</option>
+         </select>
+         <br/><br/>
+         <div>
+            <table>
+              <tr>
+                <td> Total Students in data set:</td>
+                <td><p id= "totalStudent"></p></td>
+              </tr>
+              <tr>
+                <td> No of Students who achieved selected final grade:</td>
+                <td><p id= "studentNo"></p></td>
+              </tr>
+              <tr>
+                <td> No of girls who achieved selected final grade:</td>
+                <td><p id= "girls"></p></td>
+              </tr>
+              <tr>
+                <td> No of girls with higher ed goal:</td>
+                <td><p id= "girlsYes"></p></td>
+              </tr>
+              <tr>
+                <td> No of boys who achieved selected final grade:</td>
+                <td><p id= "boys"></p></td>
+              </tr>
+              <tr>
+                <td> No of boys with higher ed goal:</td>
+                <td><p id= "boysYes"></p></td>
+              </tr>
+            </table>
+
+         </div>
+
+         <br/><br/>
+
+         <div class="chartBox">
+            <canvas id="myChart" ></canvas>
+        </div>
+     </div>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        // Provided JSON data
+        var jsonData = [
+          {
+            "totalStudent": 384,
+            "studentNo": 40,
+            "females": 16,
+            "males": 24,
+            "higher_ed_NoPct": 0,
+            "higher_ed_YesPct": 100,
+            "higher_ed_Yes_girls": 16,
+            "higher_ed_Yes_boys": 24,
+            "finalGrade": "A"
+          },
+          {
+            "totalStudent": 384,
+            "studentNo": 169,   
+            "females": 87,   
+            "males": 82,     
+            "higher_ed_NoPct": 2.4,
+            "higher_ed_YesPct": 97.6,
+            "higher_ed_Yes_girls": 86,   // girls with higher ed goal yes
+            "higher_ed_Yes_boys": 79,     // boys with higher ed goal yes
+            "finalGrade": "B"
+          },
+          {
+            "totalStudent": 384,
+            "studentNo": 140,   
+            "females": 78,   
+            "males": 62,     
+            "higher_ed_NoPct": 7.2,
+            "higher_ed_YesPct": 92.8,
+            "higher_ed_Yes_girls": 76,   // girls with higher ed goal yes
+            "higher_ed_Yes_boys": 54,     // boys with higher ed goal yes
+            "finalGrade": "C"
+          },
+          {
+            "totalStudent": 384,
+            "studentNo": 46,   
+            "females": 27,   
+            "males": 19,     
+            "higher_ed_NoPct": 13.1,
+            "higher_ed_YesPct": 86.9,
+            "higher_ed_Yes_girls": 26,   // girls with higher ed goal yes
+            "higher_ed_Yes_boys": 14,     // boys with higher ed goal yes
+            "finalGrade": "D"
+          }
+        ];
+
+        
+        const gradeDropdown = document.getElementById('gradeDropdown');
+        
+        jsonData.forEach((element, i) => {
+          // console.log(jsonData[i].finalGrade);
+          // console.log(jsonData[i].higher_ed_YesPct + "," + jsonData[i].higher_ed_NoPct);
+
+          var option = document.createElement("option");
+          option.text = jsonData[i].finalGrade;
+          option.value = jsonData[i].higher_ed_YesPct + "," + jsonData[i].higher_ed_NoPct;         
+          gradeDropdown.add(option);    
+        });
+
+        
+        //setup block
+        const data = {
+                labels: ['Yes', 'No'],
+                datasets: [{
+                label: 'Higher Ed Goal',
+                data: [0, 0],
+                borderWidth: 1
+                }]
+            };
+
+        //config block
+        const config = {
+          type: 'pie',  
+          data,
+          options: {}
+          };
+
+          //render block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+          );
+
+        
+        gradeDropdown.addEventListener('change', goalTracker);
+        function goalTracker(){
+
+            const selectedGrade = gradeDropdown.options[gradeDropdown.selectedIndex].text;
+            const selectedData = jsonData.find(d => d.finalGrade === selectedGrade);
+            // console.log(selectedData.totalStudent);
+            // console.log(selectedData.studentNo);
+            // console.log(selectedData.females);
+            // console.log(selectedData.higher_ed_Yes_girls);
+            // console.log(selectedData.males);
+            // console.log(selectedData.higher_ed_Yes_boys);
+            document.getElementById('totalStudent').innerText= selectedData.totalStudent;
+            document.getElementById('studentNo').innerText= selectedData.studentNo;
+            document.getElementById('girls').innerText= selectedData.females;
+            document.getElementById('girlsYes').innerText= selectedData.higher_ed_Yes_girls;
+            document.getElementById('boys').innerText= selectedData.males;
+            document.getElementById('boysYes').innerText= selectedData.higher_ed_Yes_boys;
+
+            myChart.data.datasets[0].data = gradeDropdown.value.split(',');
+            myChart.update();
+        }
+          
+    </script>
+
+    
+  </body> 
+  

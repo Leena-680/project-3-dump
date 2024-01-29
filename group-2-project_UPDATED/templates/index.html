@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 2</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/style.css') }}">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin="" />
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>Analysing Student Performance</h1>
+        <p><strong>Looking into the students' performances in mathematics and analysing how their results are affected by personal parameters and academic parameters</strong>, <i>finding what factors contribute to success!</i></p>
+
+        <img src="https://odinland.vn/wp-content/uploads/2020/06/29.06-portugal.jpg" width="700" height="400">
+
+        <h2>Menu</h2>
+
+        <a href="{{ url_for('map_2') }}">Go to Visualisation 1</a>
+        
+        <a href="{{ url_for('visualisation_1') }}">Go to Visualisation 2</a>
+
+        <a href="{{ url_for('visualisation_2') }}">Go to Visualisation 3</a>
+
+
+ 
+</body>
+</html>
