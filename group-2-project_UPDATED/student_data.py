@@ -29,5 +29,5 @@ df['study_time'] = df['study_time'].apply(map_study_time)
 df['travel_time'] = df['travel_time'].apply(map_travel_time)
 
 # Create and write to the SQLite database
-with sqlite3.connect('student_data.db') as conn:
+with sqlite3.connect('../group-2-project_UPDATED/student_data.db') as conn:
     df.to_sql('students', conn, index=False, if_exists='replace')

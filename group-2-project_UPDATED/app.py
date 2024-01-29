@@ -9,7 +9,7 @@ CORS(app)
 
 # Function to get DataFrame from SQLite DB
 def get_dataframe():
-    with sqlite3.connect('student_data.db') as conn:
+    with sqlite3.connect('../group-2-project_UPDATED/student_data.db') as conn:
         df = pd.read_sql_query("SELECT * FROM students", conn)
     return df
 
@@ -110,7 +110,6 @@ def get_data_by_gender():
         result.append(stats)
 
     return jsonify(result)
-
 
 
 if __name__ == '__main__':
