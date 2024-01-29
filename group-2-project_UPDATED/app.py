@@ -52,6 +52,7 @@ def get_data():
             'studentNo': len(grade_df),
             'avgStudyTime': grade_df['study_time'].mean(),
             'avgTravelTime': grade_df['travel_time'].mean(),
+            'sumClassFailures':int(grade_df['class_failures'].sum()),
             'avgAbsence': grade_df['absences'].mean(),
             'avgHealth': grade_df['health'].mean(),
             'avgFreeTime': grade_df['free_time'].mean(),
